@@ -1,14 +1,14 @@
 package com.clinicaMed.clinicaMedica.controller;
 
 import com.clinicaMed.clinicaMedica.dto.DatosMedicos;
+import com.clinicaMed.clinicaMedica.dto.MedicoDTO;
 import com.clinicaMed.clinicaMedica.model.Medico;
 import com.clinicaMed.clinicaMedica.repository.MedicoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
@@ -26,16 +26,27 @@ public class MedicoController {
     /*
     //Post data
 {
-	"nombre":"Francisco",
-	"email":"emailrandom@gmail.com",
-	"documento":"123213",
+
+{
+	"nombre":"Eduardo",
+	"email":"emailrandom2@gmail.com",
+	"documento":"123",
 	"especialidad":"ORTOPEDIA",
+	"telefono":"2123",
 	"direccion":{
 			"calle":"1271",
+			"numero":"12345",
 			"distrito":"La Plata",
 			"ciudad":"Buenos Aires",
 			"complemento":"no"
 	}
-
+}
 }*/
+    @GetMapping
+    public List<MedicoDTO>listarMedicos(){
+        return medicoRepository.findAll().stream()
+                .map(MedicoDTO::new)
+                .toList();
+
+    }
 }

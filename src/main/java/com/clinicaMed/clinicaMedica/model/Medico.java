@@ -9,6 +9,7 @@ import lombok.*;
 @Table(name = "medicos")
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -20,9 +21,12 @@ public class Medico {
     private String email;
     private String documento;
     private String telefono;
+    @Enumerated(EnumType.STRING)
     private Especialidad especialidad;
     @Embedded
     private Direccion direccion;
+
+
 
     public Medico(DatosMedicos datosRegistroMedico) {
         this.nombre = datosRegistroMedico.nombre();
