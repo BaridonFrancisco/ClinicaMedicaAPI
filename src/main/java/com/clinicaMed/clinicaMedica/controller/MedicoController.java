@@ -1,6 +1,10 @@
 package com.clinicaMed.clinicaMedica.controller;
 
-import com.clinicaMed.clinicaMedica.model.DatosMedicos;
+import com.clinicaMed.clinicaMedica.dto.DatosMedicos;
+import com.clinicaMed.clinicaMedica.model.Medico;
+import com.clinicaMed.clinicaMedica.repository.MedicoRepository;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/medicos")
 public class MedicoController {
 
+    @Autowired
+    MedicoRepository medicoRepository;
+
     @PostMapping
-    public void registrarMedico(@RequestBody DatosMedicos datosMedicos){
+    public void registrarMedico(@RequestBody @Valid DatosMedicos datosMedicos){
         System.out.println("Request llego existosamente");
-        System.out.println(datosMedicos);
+        medicoRepository.save(new Medico(datosMedicos));
+
     }
     /*
     //Post data
