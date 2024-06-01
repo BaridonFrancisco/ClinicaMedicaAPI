@@ -13,8 +13,8 @@ public record DatosMedicos(
         String email,
         @NotBlank
         String documento,
-        //@NotBlank
-        //String telefono,
+        @NotBlank
+        String telefono,
         @NotNull
         Especialidad especialidad,
         @Valid
