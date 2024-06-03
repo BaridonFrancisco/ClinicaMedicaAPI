@@ -1,6 +1,8 @@
 package com.clinicaMed.clinicaMedica.model;
 
+import com.clinicaMed.clinicaMedica.dto.DatosDireccion;
 import com.clinicaMed.clinicaMedica.dto.DatosMedicos;
+import com.clinicaMed.clinicaMedica.dto.MedicoActualizarDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,4 +38,22 @@ public class Medico {
         this.direccion = new Direccion(datosRegistroMedico.direccion());
 
     }
+
+    public void actualizarMedico(MedicoActualizarDTO medicoActualizarDTO) {
+        if(medicoActualizarDTO.nombre()!=null && !medicoActualizarDTO.nombre().isBlank()){
+            this.nombre=medicoActualizarDTO.nombre();
+        }
+        if(medicoActualizarDTO.documento()!=null && !medicoActualizarDTO.documento().isBlank()){
+            this.documento=medicoActualizarDTO.documento();
+        }
+
+
+        if(medicoActualizarDTO.direccion()!=null){
+            this.direccion=this.direccion.actualizarDireccion(medicoActualizarDTO.direccion());
+        }
+
+
+    }
+
+
 }

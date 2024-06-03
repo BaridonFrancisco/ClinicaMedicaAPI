@@ -1,6 +1,7 @@
 package com.clinicaMed.clinicaMedica.controller;
 
 import com.clinicaMed.clinicaMedica.dto.DatosMedicos;
+import com.clinicaMed.clinicaMedica.dto.MedicoActualizarDTO;
 import com.clinicaMed.clinicaMedica.dto.MedicoDTO;
 import com.clinicaMed.clinicaMedica.model.Medico;
 import com.clinicaMed.clinicaMedica.repository.MedicoRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,4 +53,31 @@ public class MedicoController {
                 .map(MedicoDTO::new);
 
     }
+
+
+    //Update Resource
+    /*
+{
+	"id": 1,
+	"nombre": "Ricardo",
+	"documento":"56734",
+	"direccion":{
+			"calle":"78 es",
+			"distrito":"b",
+			"complemento":"no",
+			"numero":"10001",
+			"ciudad":"Berriso",
+			"telefono":"567777"
+		}
+}*/
+
+
+    @Transactional
+    @PutMapping
+    public void actualizarMedico(@RequestBody @Valid MedicoActualizarDTO medicoActualizado){
+        Medico medico=medicoRepository.getReferenceById(medicoActualizado.id());
+        medico.actualizarMedico(medicoActualizado);
+
+    }
+
 }
