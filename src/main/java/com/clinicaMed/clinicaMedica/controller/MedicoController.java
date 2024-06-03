@@ -6,6 +6,9 @@ import com.clinicaMed.clinicaMedica.model.Medico;
 import com.clinicaMed.clinicaMedica.repository.MedicoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,10 +46,9 @@ public class MedicoController {
 }
 }*/
     @GetMapping
-    public List<MedicoDTO>listarMedicos(){
-        return medicoRepository.findAll().stream()
-                .map(MedicoDTO::new)
-                .toList();
+    public Page<MedicoDTO> listarMedicos(Pageable paginacion){
+        return medicoRepository.findAll(paginacion)
+                .map(MedicoDTO::new);
 
     }
 }

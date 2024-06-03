@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-
 @Table(name = "medicos")
 @Entity
 @Getter
@@ -35,5 +34,6 @@ public class Medico {
         this.telefono = datosRegistroMedico.telefono();
         this.especialidad = datosRegistroMedico.especialidad();
         this.direccion = new Direccion(datosRegistroMedico.direccion());
+
     }
 }
