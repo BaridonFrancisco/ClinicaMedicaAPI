@@ -3,6 +3,7 @@ package com.clinicaMed.clinicaMedica.controller;
 import com.clinicaMed.clinicaMedica.dto.*;
 import com.clinicaMed.clinicaMedica.model.Medico;
 import com.clinicaMed.clinicaMedica.repository.MedicoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -66,8 +67,8 @@ public class MedicoController {
     public ResponseEntity<Page<MedicoDTO>> listarMedicos (@PageableDefault(size =2)Pageable paginacion){
         //return medicoRepository.findAll(paginacion)
                // .map(MedicoDTO::new);
-        return ResponseEntity.ok(medicoRepository.findByActivoTrue(paginacion)
-                .map(MedicoDTO::new));
+            return ResponseEntity.ok(medicoRepository.findByActivoTrue(paginacion)
+                    .map(MedicoDTO::new));
 
     }
 
