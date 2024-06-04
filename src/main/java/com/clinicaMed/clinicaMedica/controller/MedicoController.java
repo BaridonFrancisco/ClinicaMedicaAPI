@@ -13,7 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -24,9 +26,21 @@ public class MedicoController {
     MedicoRepository medicoRepository;
 
     @PostMapping
-    public void registrarMedico(@RequestBody @Valid DatosMedicos datosMedicos){
+    public ResponseEntity<DatosMedicoDto>  registrarMedico(@RequestBody @Valid DatosMedicos datosMedicos, UriComponentsBuilder uriComponentsBuilder){
         System.out.println("Request llego existosamente");
-        medicoRepository.save(new Medico(datosMedicos));
+       Medico medico= medicoRepository.save(new Medico(datosMedicos));
+        System.out.println(uriComponentsBuilder.build().getPath());
+        DatosMedicoDto datosMedicos1=new DatosMedicoDto(medico.getId(),medico.getNombre(),medico.getEmail(),medico.getDocumento(),medico.getTelefono(),medico.getEspecialidad(),
+                new DatosDireccion(medico.getDireccion().getCalle(),
+                        medico.getDireccion().getDistrito(),
+                        medico.getDireccion().getCiudad(),
+                        medico.getDireccion().getNumero(),
+                        medico.getDireccion().getComplemento()));
+       URI url=uriComponentsBuilder.path("/medicos/{id}")
+               .buildAndExpand(medico.getId())
+               .toUri();
+       return ResponseEntity.created(url)
+               .body(datosMedicos1);
 
     }
     /*
