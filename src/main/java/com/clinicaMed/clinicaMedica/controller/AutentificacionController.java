@@ -1,5 +1,8 @@
 package com.clinicaMed.clinicaMedica.controller;
 import com.clinicaMed.clinicaMedica.dto.DatosAutentificacionUsuario;
+import com.clinicaMed.clinicaMedica.dto.JWTtokenDTO;
+import com.clinicaMed.clinicaMedica.infra.security.TokenService;
+import com.clinicaMed.clinicaMedica.model.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +20,16 @@ public class AutentificacionController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    TokenService tokenService;
+
     @PostMapping
     public ResponseEntity autentificarUsuario(@RequestBody @Valid DatosAutentificacionUsuario datosAutentificacionUsuario){
-        Authentication token=new UsernamePasswordAuthenticationToken(datosAutentificacionUsuario.login(),datosAutentificacionUsuario.clave());
-        authenticationManager.authenticate(token);
-        return ResponseEntity.ok()
-                .build();
+        Authentication authToken=new UsernamePasswordAuthenticationToken(datosAutentificacionUsuario.login()
+                ,datosAutentificacionUsuario.clave());
+        Authentication authentication= authenticationManager.authenticate(authToken);
+        String JTWtoken=tokenService.generarToken((Usuario)authentication.getPrincipal());
+        return ResponseEntity.ok(new JWTtokenDTO(JTWtoken));
     }
 
 }
