@@ -1,6 +1,5 @@
 package com.clinicaMed.clinicaMedica.infra.security;
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
@@ -24,7 +23,7 @@ public class TokenService {
                     .withClaim("id",usuario.getLogin())
                     .withExpiresAt(generarFechaExpiracion())
                     .withSubject(usuario.getLogin())
-                    .sign(algorithm);
+                    .sign(algorithm).trim();
         } catch (JWTCreationException exception){
             throw new RuntimeException("No se pudo generar el token");
         }
@@ -33,13 +32,14 @@ public class TokenService {
     // verifica el token
     public String getSubject(String token) {
         DecodedJWT verifier = null;
+        System.out.println("El token en el subjet es:"+token);
         try {
             Algorithm algorithm = Algorithm.HMAC256("123456");
             verifier = JWT.require(algorithm)
                     // specify any specific claim validations
                     .withIssuer("medclina")
                     .build()
-                    .verify(token);
+                    .verify(token.trim());
             return verifier.getSubject();
         } catch (JWTVerificationException exception) {
             // Invalid signature/claims
