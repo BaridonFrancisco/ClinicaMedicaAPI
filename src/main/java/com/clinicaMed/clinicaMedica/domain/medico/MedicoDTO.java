@@ -1,7 +1,5 @@
 package com.clinicaMed.clinicaMedica.domain.medico;
 
-import com.clinicaMed.clinicaMedica.domain.Medico;
-
 public record MedicoDTO(
         Long id,
         String nombre,

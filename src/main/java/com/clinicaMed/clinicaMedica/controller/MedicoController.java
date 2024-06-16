@@ -2,7 +2,7 @@ package com.clinicaMed.clinicaMedica.controller;
 
 import com.clinicaMed.clinicaMedica.domain.direccion.DatosDireccion;
 import com.clinicaMed.clinicaMedica.domain.medico.*;
-import com.clinicaMed.clinicaMedica.domain.Medico;
+import com.clinicaMed.clinicaMedica.domain.medico.Medico;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

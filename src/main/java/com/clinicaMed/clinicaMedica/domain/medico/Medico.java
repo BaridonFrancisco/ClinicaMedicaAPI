@@ -1,9 +1,6 @@
-package com.clinicaMed.clinicaMedica.domain;
+package com.clinicaMed.clinicaMedica.domain.medico;
 
-import com.clinicaMed.clinicaMedica.domain.medico.DatosMedicos;
-import com.clinicaMed.clinicaMedica.domain.medico.MedicoActualizarDTO;
 import com.clinicaMed.clinicaMedica.domain.direccion.Direccion;
-import com.clinicaMed.clinicaMedica.domain.medico.Especialidad;
 import jakarta.persistence.*;
 import lombok.*;
 
