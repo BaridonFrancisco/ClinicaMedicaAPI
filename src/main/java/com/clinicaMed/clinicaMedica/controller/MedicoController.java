@@ -1,9 +1,8 @@
 package com.clinicaMed.clinicaMedica.controller;
 
-import com.clinicaMed.clinicaMedica.dto.*;
-import com.clinicaMed.clinicaMedica.model.Medico;
-import com.clinicaMed.clinicaMedica.repository.MedicoRepository;
-import jakarta.persistence.EntityNotFoundException;
+import com.clinicaMed.clinicaMedica.domain.direccion.DatosDireccion;
+import com.clinicaMed.clinicaMedica.domain.medico.*;
+import com.clinicaMed.clinicaMedica.domain.Medico;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;

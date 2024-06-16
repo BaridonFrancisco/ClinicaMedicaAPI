@@ -1,6 +1,6 @@
 package com.clinicaMed.clinicaMedica.infra.security;
 
-import com.clinicaMed.clinicaMedica.repository.UsuarioRepository;
+import com.clinicaMed.clinicaMedica.domain.usuario.UsuarioRepository;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

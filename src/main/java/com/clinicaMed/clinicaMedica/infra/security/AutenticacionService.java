@@ -1,7 +1,7 @@
 package com.clinicaMed.clinicaMedica.infra.security;
 
 
-import com.clinicaMed.clinicaMedica.repository.UsuarioRepository;
+import com.clinicaMed.clinicaMedica.domain.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

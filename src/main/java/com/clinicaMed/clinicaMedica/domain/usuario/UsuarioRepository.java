@@ -1,6 +1,5 @@
-package com.clinicaMed.clinicaMedica.repository;
+package com.clinicaMed.clinicaMedica.domain.usuario;
 
-import com.clinicaMed.clinicaMedica.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

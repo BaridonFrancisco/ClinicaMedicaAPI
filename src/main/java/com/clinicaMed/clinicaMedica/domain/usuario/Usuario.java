@@ -1,4 +1,4 @@
-package com.clinicaMed.clinicaMedica.model;
+package com.clinicaMed.clinicaMedica.domain.usuario;
 
 import jakarta.persistence.*;
 import lombok.*;

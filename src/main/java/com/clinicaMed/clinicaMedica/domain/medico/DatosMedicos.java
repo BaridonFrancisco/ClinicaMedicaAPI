@@ -1,7 +1,7 @@
-package com.clinicaMed.clinicaMedica.dto;
+package com.clinicaMed.clinicaMedica.domain.medico;
 
 
-import com.clinicaMed.clinicaMedica.model.Especialidad;
+import com.clinicaMed.clinicaMedica.domain.direccion.DatosDireccion;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

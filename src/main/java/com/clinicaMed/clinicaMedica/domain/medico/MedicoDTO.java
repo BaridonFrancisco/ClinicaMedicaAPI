@@ -1,7 +1,6 @@
-package com.clinicaMed.clinicaMedica.dto;
+package com.clinicaMed.clinicaMedica.domain.medico;
 
-import com.clinicaMed.clinicaMedica.model.Especialidad;
-import com.clinicaMed.clinicaMedica.model.Medico;
+import com.clinicaMed.clinicaMedica.domain.Medico;
 
 public record MedicoDTO(
         Long id,

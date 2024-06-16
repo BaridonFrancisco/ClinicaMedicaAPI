@@ -1,8 +1,8 @@
 package com.clinicaMed.clinicaMedica.controller;
-import com.clinicaMed.clinicaMedica.dto.DatosAutentificacionUsuario;
-import com.clinicaMed.clinicaMedica.dto.JWTtokenDTO;
+import com.clinicaMed.clinicaMedica.domain.usuario.DatosAutentificacionUsuario;
+import com.clinicaMed.clinicaMedica.infra.security.JWTtokenDTO;
 import com.clinicaMed.clinicaMedica.infra.security.TokenService;
-import com.clinicaMed.clinicaMedica.model.Usuario;
+import com.clinicaMed.clinicaMedica.domain.usuario.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

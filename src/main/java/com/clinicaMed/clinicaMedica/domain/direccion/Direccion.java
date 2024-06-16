@@ -1,7 +1,6 @@
-package com.clinicaMed.clinicaMedica.model;
+package com.clinicaMed.clinicaMedica.domain.direccion;
 
 
-import com.clinicaMed.clinicaMedica.dto.DatosDireccion;
 import jakarta.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;

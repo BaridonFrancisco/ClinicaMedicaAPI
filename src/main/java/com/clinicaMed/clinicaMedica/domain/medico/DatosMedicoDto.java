@@ -1,6 +1,6 @@
-package com.clinicaMed.clinicaMedica.dto;
+package com.clinicaMed.clinicaMedica.domain.medico;
 
-import com.clinicaMed.clinicaMedica.model.Especialidad;
+import com.clinicaMed.clinicaMedica.domain.direccion.DatosDireccion;
 
 
 public record DatosMedicoDto(

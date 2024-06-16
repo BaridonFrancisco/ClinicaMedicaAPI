@@ -1,4 +1,4 @@
-package com.clinicaMed.clinicaMedica.dto;
+package com.clinicaMed.clinicaMedica.domain.direccion;
 
 
 import jakarta.validation.constraints.NotBlank;
