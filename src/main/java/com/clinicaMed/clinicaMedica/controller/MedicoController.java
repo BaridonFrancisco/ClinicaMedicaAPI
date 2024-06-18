@@ -24,6 +24,9 @@ public class MedicoController {
     @Autowired
     MedicoRepository medicoRepository;
 
+
+    /*Registra un nuevo medico*/
+
     @PostMapping
     public ResponseEntity<DatosMedicoDto>  registrarMedico(@RequestBody @Valid DatosMedicos datosMedicos, UriComponentsBuilder uriComponentsBuilder){
         System.out.println("Request llego existosamente");

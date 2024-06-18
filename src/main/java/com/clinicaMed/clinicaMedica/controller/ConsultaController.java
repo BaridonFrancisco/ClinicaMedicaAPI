@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
+/*@Controller
 @ResponseBody
-@RequestMapping("/consultas")
+@RequestMapping("/consultas")*/
 public class ConsultaController {
 
-    @PostMapping
+  /*  @PostMapping
     public ResponseEntity agendar(@RequestBody @Valid DatosAgendarConsulta datos){
 
         return ResponseEntity.ok(new DatosDetalleConsunta(null,null,null,null));
-    }
+    }*/
 }
