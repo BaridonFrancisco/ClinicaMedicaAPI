@@ -48,10 +48,12 @@ public class Paciente {
         if(pacienteActualizar.documentoIdentidad()!=null && !pacienteActualizar.documentoIdentidad().isBlank()){
             this.documento=pacienteActualizar.documentoIdentidad();
         }
-        this.direccion=actualizarDirrecion(pacienteActualizar);
+        System.out.println("los datos "+pacienteActualizar.datosDireccion());
+        this.direccion.actualizarDireccion(pacienteActualizar.datosDireccion());
     }
 
-    public Direccion actualizarDirrecion(PacienteActualizar pacienteActualizar){
-       return new Direccion(pacienteActualizar.calle(),pacienteActualizar.numero(),pacienteActualizar.complemento(),pacienteActualizar.distrito(),pacienteActualizar.ciudad());
+
+    public void deleteLogico() {
+        this.activo=false;
     }
 }

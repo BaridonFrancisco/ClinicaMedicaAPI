@@ -1,5 +1,6 @@
 package com.clinicaMed.clinicaMedica.domain.paciente;
 
+import com.clinicaMed.clinicaMedica.domain.direccion.DatosDireccion;
 import com.clinicaMed.clinicaMedica.domain.direccion.Direccion;
 
 public record PacienteUpdateDTO(
@@ -9,7 +10,7 @@ public record PacienteUpdateDTO(
         String email,
         String telefono,
         String documentoIdentidad,
-        Direccion direccionPaciente
+        DatosDireccion datosDireccion
 
 ) {
 }
