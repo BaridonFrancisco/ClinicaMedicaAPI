@@ -8,15 +8,15 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-/*@Table(name = "consultas")
+@Table(name = "consultas")
 @Entity(name = "consulta")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")*/
+@EqualsAndHashCode(of = "id")
 public class Consulta {
-  /*  @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -28,5 +28,5 @@ public class Consulta {
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
-    private LocalDateTime fecha;*/
+    private LocalDateTime fecha;
 }

@@ -1,6 +1,5 @@
 package com.clinicaMed.clinicaMedica.domain.paciente;
 
-
 import com.clinicaMed.clinicaMedica.domain.direccion.DatosDireccion;
 import com.clinicaMed.clinicaMedica.domain.direccion.Direccion;
 import jakarta.validation.Valid;

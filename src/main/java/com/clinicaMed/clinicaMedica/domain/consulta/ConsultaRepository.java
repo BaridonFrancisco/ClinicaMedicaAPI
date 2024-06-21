@@ -4,8 +4,8 @@ package com.clinicaMed.clinicaMedica.domain.consulta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-/*@Repository
+@Repository
 public interface ConsultaRepository extends JpaRepository<Consulta,Long> {
 
 
-}*/
+}
