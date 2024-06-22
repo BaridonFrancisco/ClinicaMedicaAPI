@@ -9,7 +9,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Table(name = "consultas")
-@Entity(name = "consulta")
+@Entity(name = "Consulta")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,5 +28,5 @@ public class Consulta {
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
-    private LocalDateTime fecha;
+    private LocalDateTime data;
 }

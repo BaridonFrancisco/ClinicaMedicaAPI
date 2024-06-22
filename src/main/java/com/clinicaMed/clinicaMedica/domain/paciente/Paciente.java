@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Setter
 @Getter
-@Entity(name = "paciente")
+@Entity(name = "Paciente")
 @Table(name="pacientes")
 @EqualsAndHashCode(of = "id")
 @ToString

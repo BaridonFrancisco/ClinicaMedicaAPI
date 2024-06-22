@@ -1,11 +1,15 @@
 package com.clinicaMed.clinicaMedica.domain.consulta;
 
+import com.clinicaMed.clinicaMedica.domain.consulta.validaciones.ValidarConsulta;
 import com.clinicaMed.clinicaMedica.domain.medico.Medico;
 import com.clinicaMed.clinicaMedica.domain.medico.MedicoRepository;
 import com.clinicaMed.clinicaMedica.domain.paciente.PacienteRepository;
 import com.clinicaMed.clinicaMedica.infra.errores.ValidacionConsultaException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AgendaConsultaService {
@@ -15,21 +19,20 @@ public class AgendaConsultaService {
     private PacienteRepository pacienteRepository;
     @Autowired
     private MedicoRepository medicoRepository;
+    @Autowired
+    private List<ValidarConsulta> listaValidaciones;
 
     public void agendar(DatosAgendarConsulta datosValidar){
 
-       if(pacienteRepository.existsById(datosValidar.idPaciente()) && medicoRepository.existsById(datosValidar.idMedico())){
-           var paciente=pacienteRepository.findById(datosValidar.idPaciente());
-           var medico=medicoRepository.findById(datosValidar.idMedico());
-            var medicoAleatorio=seleccionarMedico(datosValidar);
-           if(medico.isPresent() && paciente.isPresent()){
-               var consultaCreada=new Consulta(null,medico.get(),paciente.get(),datosValidar.fecha());
-               consultaRepository.save(consultaCreada);
-           }
+        listaValidaciones.forEach(v-> v.validar(datosValidar));
+        var paciente=pacienteRepository.findById(datosValidar.idPaciente())
+                .orElseThrow(RuntimeException::new);
+        
+        var medico=seleccionarMedico(datosValidar);
+        if(medico==null)throw new ValidacionConsultaException("No se ha podido seleciona un medico");
+        var consultaCreada=new Consulta(null,medico,paciente,datosValidar.fecha());
+        consultaRepository.save(consultaCreada);
 
-       }
-
-        throw new ValidacionConsultaException("no se ha podido validar los datos de la consulta");
     }
 
 

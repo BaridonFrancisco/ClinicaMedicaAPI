@@ -1,13 +1,14 @@
 package com.clinicaMed.clinicaMedica.domain.consulta.validaciones;
 
 import com.clinicaMed.clinicaMedica.domain.consulta.DatosAgendarConsulta;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.time.chrono.ChronoLocalDateTime;
 
-public class HorarioAtencion {
-
+@Component
+public class HorarioAtencion implements ValidarConsulta {
+    @Override
     public void validar(DatosAgendarConsulta datosAgendarConsulta) {
 
         var dia = datosAgendarConsulta.fecha().getDayOfWeek().equals(DayOfWeek.SUNDAY);
@@ -24,7 +25,7 @@ public class HorarioAtencion {
 
 
         if (dia || !condicion) {
-            throw new RuntimeException();
+            throw new RuntimeException("Horario no valido");
         }
     }
 }

@@ -26,6 +26,11 @@ public class TrataErrores {
         return ResponseEntity.badRequest().body(error);
     }
 
+    @ExceptionHandler(ValidacionConsultaException.class)
+    public ResponseEntity errorHandlerValidaciones(ValidacionConsultaException err){
+        return ResponseEntity.badRequest().body(err.getMessage());
+    }
+
     private record DatosError(String campo,String error){
         public DatosError(FieldError error){
             this(error.getField(),error.getDefaultMessage());

@@ -4,18 +4,21 @@ import com.clinicaMed.clinicaMedica.domain.consulta.ConsultaRepository;
 import com.clinicaMed.clinicaMedica.domain.consulta.DatosAgendarConsulta;
 import com.clinicaMed.clinicaMedica.infra.errores.ValidacionConsultaException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class MedicoConConsulta {
+@Component
+public class MedicoConConsulta implements ValidarConsulta {
     @Autowired
     ConsultaRepository consultaRepository;
 
-    public void validar(DatosAgendarConsulta datosAgendarConsulta){
-        if(datosAgendarConsulta.idMedico()==null){
+    @Override
+    public void validar(DatosAgendarConsulta datosAgendarConsulta) {
+        if (datosAgendarConsulta.idMedico() == null) {
             return;
         }
-        var condicion=consultaRepository.existByMedicoIdAndFecha(datosAgendarConsulta.idMedico(),datosAgendarConsulta.fecha());
+        var condicion = consultaRepository.existsByMedicoIdAndData(datosAgendarConsulta.idMedico(), datosAgendarConsulta.fecha());
 
-        if(condicion){
+        if (condicion) {
             throw new ValidacionConsultaException("el medico ya esta trabajando con ese paciente");
         }
     }
