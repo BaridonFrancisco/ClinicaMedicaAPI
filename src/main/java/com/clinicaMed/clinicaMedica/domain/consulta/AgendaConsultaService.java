@@ -44,4 +44,13 @@ public class AgendaConsultaService {
 
     }
 
+    public void removerConsulta(DatosAgendarConsulta datosAgendarConsulta){
+        var existeConsulta=consultaRepository.existsById(datosAgendarConsulta.id());
+        if(!existeConsulta){
+            throw new RuntimeException("La consulta no existe");
+        }
+        listaValidaciones.forEach(v->v.validar(datosAgendarConsulta));
+        consultaRepository.deleteById(datosAgendarConsulta.id());
+    }
+
 }
