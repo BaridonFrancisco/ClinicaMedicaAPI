@@ -12,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
 public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +38,17 @@ public class Medico {
         this.direccion = new Direccion(datosRegistroMedico.direccion());
         this.activo=true;
 
+    }
+
+    public Medico(Long id, String nombre,String email,String documento,Especialidad especialidad,Direccion direccion,String telefono,Boolean activo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.documento = documento;
+        this.especialidad=especialidad;
+        this.direccion=direccion;
+        this.telefono=telefono;
+        this.activo=activo;
     }
 
     public void actualizarMedico(MedicoActualizarDTO medicoActualizarDTO) {
