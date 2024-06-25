@@ -65,7 +65,7 @@ class MedicoRepositoryTest {
         Medico medico=registrarMedico("Juan Gulberto","test1@gmail.com","2214123","100001",Especialidad.CARDIOLOGIA,
                 new Direccion("x","101","no","norte","Buenos aires"));
 
-        
+
         var medicoLibre=medicoRepository.seleccionarMedicoConEspecialidad(Especialidad.CARDIOLOGIA,proximoLunes);
         System.out.println(medicoLibre);
 

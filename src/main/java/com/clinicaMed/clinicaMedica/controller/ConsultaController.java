@@ -37,7 +37,7 @@ public class ConsultaController {
     @Transactional
     @Operation(summary = "remueve una consulta de la base de datos",
     description = "",
-    tags = {""})
+    tags = {"consulta","delete"})
     public ResponseEntity cancelarConsulta(DatosAgendarConsulta datosAgendarConsulta){
         agendaConsultaService.removerConsulta(datosAgendarConsulta);
         return ResponseEntity.noContent().build();
