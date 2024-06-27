@@ -27,9 +27,9 @@ public class ConsultaController {
     @Operation(summary ="registra una consulta",
     description = "registra una consulta para un paciente mediante su id y el del medico",
     tags = {"consulta","post"})
-    public ResponseEntity agendar(@RequestBody @Valid DatosAgendarConsulta datos){
-        agendaConsultaService.agendar(datos);
-        return ResponseEntity.ok(new DatosDetalleConsulta(null,null,null,null));
+    public ResponseEntity<DatosDetalleConsulta> agendar(@RequestBody @Valid DatosAgendarConsulta datos){
+       var response= agendaConsultaService.agendar(datos);
+        return ResponseEntity.ok(response);
     }
 
     //elimina la consulta

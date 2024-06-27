@@ -47,16 +47,17 @@ class ConsultaControllerTest {
 
         Assertions.assertEquals(respuesta.getStatus(), HttpStatus.BAD_REQUEST.value());
     }
-
+    //TODO investigar sobre mockito y el mockeo
     @Test
     @DisplayName("deberia retornar 200 cuandos los datos son validos")
     @WithMockUser
     void agendar2() throws Exception {
+        //given
         var fecha= LocalDateTime.now().plusHours(1);
         Especialidad especialidad=Especialidad.CARDIOLOGIA;
+        var datos=new DatosDetalleConsulta(null,1L,4L,fecha);
 
-        var datos=new DatosAgendarConsulta(null,1L,4L,fecha,especialidad);
-
+        //When
         when(agendaConsultaService.agendar(any())).thenReturn(datos);
 
         var respuesta=mockMvc.perform(post("/consultas")
@@ -66,9 +67,10 @@ class ConsultaControllerTest {
                 .andReturn()
                 .getResponse();
 
+        //Then
         Assertions.assertEquals(respuesta.getStatus(), HttpStatus.OK.value());
 
-        String jsonEsperado=detalleConsulta.write(new DatosDetalleConsulta(null,1L,4L,fecha)).getJson();
+        String jsonEsperado=detalleConsulta.write(datos).getJson();
 
 
         Assertions.assertEquals(respuesta.getContentAsString(),jsonEsperado);

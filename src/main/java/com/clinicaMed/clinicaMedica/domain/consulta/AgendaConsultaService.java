@@ -22,7 +22,7 @@ public class AgendaConsultaService {
     @Autowired
     private List<ValidarConsulta> listaValidaciones;
 
-    public void agendar(DatosAgendarConsulta datosValidar){
+    public DatosDetalleConsulta agendar(DatosAgendarConsulta datosValidar){
 
         listaValidaciones.forEach(v-> v.validar(datosValidar));
         var paciente=pacienteRepository.findById(datosValidar.idPaciente())
@@ -32,6 +32,8 @@ public class AgendaConsultaService {
         if(medico==null)throw new ValidacionConsultaException("No se ha podido seleciona un medico");
         var consultaCreada=new Consulta(null,medico,paciente,datosValidar.fecha());
         consultaRepository.save(consultaCreada);
+
+        return new DatosDetalleConsulta(consultaCreada);
 
     }
 
